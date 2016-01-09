@@ -20,6 +20,7 @@
 		<jstl.version>1.2</jstl.version>
 		<servlet-api.version>2.5</servlet-api.version>
 		<jsp-api.version>2.0</jsp-api.version>
+		<dd.common.version>0.0.4-SNAPSHOT</dd.common.version>
 	</properties>
 	<dependencies>
 		<!-- Spring -->
@@ -53,6 +54,11 @@
 			<groupId>com.dingding</groupId>
 			<artifactId>dd-orm</artifactId>
 			<version>${dd.orm.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.dingding</groupId>
+			<artifactId>dd-common</artifactId>
+			<version>${dd.common.version}</version>
 		</dependency>
 		<!-- mybatis -->
 		<dependency>
@@ -120,7 +126,27 @@
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
+
 	<build>
 		<finalName>caption</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<configuration>
+					<port>8080</port>
+					<path>/</path>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<debug>true</debug>
+					<debuglevel>none</debuglevel>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
 </project>

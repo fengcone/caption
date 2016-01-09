@@ -1,5 +1,7 @@
 package com.fengcone.caption.domain;
 
+import com.dingding.idmaker.IdMaker;
+
 public class Word {
 	private Long id;
 
@@ -19,6 +21,10 @@ public class Word {
 
 	public Long getId() {
 		return id;
+	}
+
+	public Word() {
+		this.id = IdMaker.getId();
 	}
 
 	public void setId(Long id) {

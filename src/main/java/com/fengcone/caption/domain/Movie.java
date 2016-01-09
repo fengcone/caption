@@ -40,4 +40,12 @@ public class Movie {
 	public void setMovieTime(Integer movieTime) {
 		this.movieTime = movieTime;
 	}
+
+	@Override
+	public String toString() {
+		return "Movie [" + (id != null ? "id=" + id + ", " : "")
+				+ (movieId != null ? "movieId=" + movieId + ", " : "")
+				+ (movieName != null ? "movieName=" + movieName + ", " : "")
+				+ (movieTime != null ? "movieTime=" + movieTime : "") + "]";
+	}
 }

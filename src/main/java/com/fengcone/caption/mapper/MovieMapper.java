@@ -1,5 +1,7 @@
 package com.fengcone.caption.mapper;
 
+import java.util.List;
+
 import com.fengcone.caption.domain.Movie;
 
 public interface MovieMapper {
@@ -14,4 +16,8 @@ public interface MovieMapper {
 	int updateByPrimaryKeySelective(Movie record);
 
 	int updateByPrimaryKey(Movie record);
+
+	List<Movie> selectAll();
+	
+	List<Movie> selectConditon(Movie movie);
 }
