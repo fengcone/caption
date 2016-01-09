@@ -2,13 +2,11 @@ package com.fengcone.caption.aop;
 
 import org.apache.log4j.Logger;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.springframework.stereotype.Component;
 
 import com.fengcone.caption.common.CodeEnum;
 import com.fengcone.caption.common.Response;
 import com.fengcone.caption.param.Param;
 
-@Component
 public class CaptionAop {
 	private static final Logger logger = Logger.getLogger(CaptionAop.class);
 

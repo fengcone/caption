@@ -7,7 +7,7 @@
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
 	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
 	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
-	<!-- <aop:aspectj-autoproxy /> -->
+	<aop:aspectj-autoproxy />
 	<!-- Spring 参数文件配置 -->
 	<bean
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -43,18 +43,12 @@
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="com.fengcone.caption.mapper" />
 	</bean>
-	<!-- <aop:config proxy-target-class="true">
-		<aop:aspect id="captionAspectj" ref="captionAop" order="0">
+	<bean id="captionAop" class="com.fengcone.caption.aop.CaptionAop"/>
+	<aop:config>
+		<aop:aspect id="captionAspect" ref="captionAop">
 			<aop:pointcut id="captionAopPointCut"
-					expression="execution(* com.fengcone.caption.controller.*.*(..)) and (args(..,request,response))" />
+				expression="execution(* com.fengcone.caption.controller.*.*(..))" />
 			<aop:around pointcut-ref="captionAopPointCut" method="around"></aop:around>
 		</aop:aspect>
-	</aop:config> -->
-	<aop:config proxy-target-class="true">
-        <aop:aspect id="captionAspect" ref="captionAop" order="1">
-            <aop:pointcut id="captionAopPointCut"
-                          expression="execution(* com.fengcone.caption.controller.*.*(..))" />
-            <aop:around pointcut-ref="captionAopPointCut" method="around"></aop:around>
-        </aop:aspect>
-    </aop:config>
+	</aop:config>
 </beans>
