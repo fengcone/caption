@@ -8,16 +8,16 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.dingding.idmaker.IdMaker;
 import com.fengcone.caption.domain.Caption;
-import com.fengcone.caption.domain.mapper.CaptionMapper;
-
+import com.fengcone.caption.mapper.CaptionMapper;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:ctx.xml" })
 public class MovieDaoTest {
 	@Autowired
 	CaptionMapper mapper;
+
 	@Test
-	public void testInsert(){
+	public void testInsert() {
 		Caption caption = new Caption();
 		caption.setId(IdMaker.getId());
 		caption.setChinese("哈哈");
