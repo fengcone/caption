@@ -1,6 +1,11 @@
 package com.fengcone.caption.domain;
 
+import java.util.UUID;
+
 public class Word {
+	public Word(){
+		this.id = UUID.randomUUID().toString();
+	}
     private String id;
 
     private String english;
