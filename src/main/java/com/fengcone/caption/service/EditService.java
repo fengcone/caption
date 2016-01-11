@@ -22,4 +22,7 @@ public class EditService {
 		response.setData(data);
 		return response;
 	}
+	public void test() {
+		System.out.println("hahahahhahahahahahhahahahahha");
+	}
 }

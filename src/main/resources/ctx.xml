@@ -43,12 +43,5 @@
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="com.fengcone.caption.mapper" />
 	</bean>
-	<bean id="captionAop" class="com.fengcone.caption.aop.CaptionAop"/>
-	<aop:config>
-		<aop:aspect id="captionAspect" ref="captionAop">
-			<aop:pointcut id="captionAopPointCut"
-				expression="execution(* com.fengcone.caption.controller.*.*(..))" />
-			<aop:around pointcut-ref="captionAopPointCut" method="around"></aop:around>
-		</aop:aspect>
-	</aop:config>
+	<!-- <import resource="springmvc-config.xml"/> -->
 </beans>
