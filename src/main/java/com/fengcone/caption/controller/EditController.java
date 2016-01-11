@@ -8,8 +8,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fengcone.caption.common.Response;
+import com.fengcone.caption.param.ChooseData;
 import com.fengcone.caption.service.EditService;
 
 @Controller
@@ -20,16 +22,16 @@ public class EditController {
 	
 	@RequestMapping("test")
 	public void test(HttpServletRequest request,HttpServletResponse response) throws IOException{
-		editService.test();
 		response.getWriter().write("xxxx");
 	}
-	@RequestMapping("choose")
-	public ModelAndView chooseMovie(HttpServletRequest request,HttpServletResponse response){
-		ModelAndView mv = new ModelAndView();
-		return mv;
+	@RequestMapping("choos")
+	public void chooseMovie(HttpServletRequest request,HttpServletResponse response){
 	}
-	public void test(){
-		System.out.println("something");
+	
+	@RequestMapping("movie/data")
+	@ResponseBody
+	public Response<ChooseData> getMovieData(){
+		return editService.choose();
 	}
 }
 

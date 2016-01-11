@@ -23,12 +23,20 @@
 		<!-- 后缀 -->
 		<property name="suffix" value=".jsp" />
 	</bean>
-	<bean id="captionAop" class="com.fengcone.caption.aop.CaptionAop" />
-	<aop:config>
-		<aop:aspect id="captionAspect" ref="captionAop">
-			<aop:pointcut id="captionAopPointCut"
-				expression="execution(* com.fengcone.caption.controller.*.*(..)) and (args(..,request,response))" />
-			<aop:around method="around" pointcut-ref="captionAopPointCut"></aop:around>
+	<!-- <bean id="apiAop" class="com.fengcone.caption.aop.ApiAop"></bean>
+	<aop:config proxy-target-class="true">
+		<aop:aspect id="apiAspect" ref="apiAop" order="0">
+			<aop:pointcut id="apiAopPointCut"
+				expression="execution(* com.fengcone.caption.api.*.*(..)) and (args(..,request,response))" />
+			<aop:around method="around" pointcut-ref="apiAopPointCut"></aop:around>
+		</aop:aspect>
+	</aop:config> -->
+	<bean id="controllerAop" class="com.fengcone.caption.aop.ControllerAop" />
+	<aop:config proxy-target-class="true">
+		<aop:aspect id="controllerAspect" ref="controllerAop" order="0">
+			<aop:pointcut id="controllerAopPointCut"
+				expression="execution(* com.fengcone.caption.controller.*.*(..))" />
+			<aop:around method="around" pointcut-ref="controllerAopPointCut"></aop:around>
 		</aop:aspect>
 	</aop:config>
 </beans>
