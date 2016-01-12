@@ -45,6 +45,14 @@
 		<servlet-name>springmvc-web</servlet-name>
 		<url-pattern>/s/*</url-pattern>
 	</servlet-mapping>
+	<filter>
+		<filter-name>ResponseFilter</filter-name>
+		<filter-class>com.fengcone.caption.aop.ResponseFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>ResponseFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>

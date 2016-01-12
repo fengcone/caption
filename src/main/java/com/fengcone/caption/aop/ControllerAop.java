@@ -13,10 +13,6 @@ import com.fengcone.caption.param.Param;
 public class ControllerAop {
 	private static final Logger logger = Logger.getLogger(ControllerAop.class);
 
-	public ControllerAop() {
-		System.out.println("这里进行了AOP的");
-	}
-
 	public Object around(ProceedingJoinPoint joinPoint)
 			throws Throwable {
 		Object ret = null;

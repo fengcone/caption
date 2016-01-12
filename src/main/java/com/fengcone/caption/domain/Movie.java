@@ -1,5 +1,8 @@
 package com.fengcone.caption.domain;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 public class Movie {
     private String id;
 
@@ -40,4 +43,9 @@ public class Movie {
     public void setMovieTime(Integer movieTime) {
         this.movieTime = movieTime;
     }
+    @Override
+	public String toString() {
+		return ReflectionToStringBuilder.toString(this,
+				ToStringStyle.SHORT_PREFIX_STYLE);
+	}
 }
