@@ -7,7 +7,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 import com.fengcone.caption.domain.Movie;
 
-public class ChooseData extends Param{
+public class ChooseDTO extends Param{
 	private static final long serialVersionUID = 32682416L;
 	private List<Movie> movies;
 	public List<Movie> getMovies() {
