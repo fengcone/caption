@@ -29,7 +29,7 @@
 	<aop:config proxy-target-class="true">
 		<aop:aspect id="apiAspect" ref="apiAop" order="0">
 			<aop:pointcut id="apiAopPointCut"
-				expression="execution(* com.fengcone.caption.api.*.*(..))" />
+				expression="execution(* com.fengcone.caption.api.*.*(..)) and (args(..,request,response))" />
 			<aop:around method="around" pointcut-ref="apiAopPointCut"></aop:around>
 		</aop:aspect>
 	</aop:config>

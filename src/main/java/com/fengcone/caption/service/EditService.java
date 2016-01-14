@@ -42,7 +42,7 @@ public class EditService {
 		pac.setEndTime(param.getEndTime());
 		pac.setChinese(param.getChinese());
 		pac.setEnglish(param.getEnglish());
-		pac.setId(UUID.randomUUID().toString());
+		pac.setId(UUID.randomUUID().toString().substring(0, 8));
 		pac.setStartTime(param.getStartTime());
 		packageDao.insert(pac);
 		Response<Param> response = new Response<Param>();
