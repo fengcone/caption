@@ -1,24 +1,22 @@
 package com.fengcone.caption.api;
 
-import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.codehaus.jackson.JsonParseException;
+import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.CollectionUtils;
-import org.springframework.util.NumberUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.fengcone.caption.common.Response;
+import com.fengcone.caption.domain.Caption;
 import com.fengcone.caption.param.AddPackageParam;
 import com.fengcone.caption.param.ChooseDTO;
+import com.fengcone.caption.param.NextCaptionParam;
 import com.fengcone.caption.param.Param;
 import com.fengcone.caption.service.EditService;
 
@@ -41,6 +39,14 @@ public class EditApi {
 		AddPackageParam param = mapper.readValue(request.getAttribute("param")
 				.toString(), AddPackageParam.class);
 		Response<Param> data = service.addPackage(param);
+		response.getWriter().write(mapper.writeValueAsString(data));
+	}
+
+	@RequestMapping("next/caption")
+	public void nextCaption(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		NextCaptionParam param = mapper.readValue(request.getAttribute("param").toString(), NextCaptionParam.class);
+		Response<Caption> data = service.nextCaption(param);
 		response.getWriter().write(mapper.writeValueAsString(data));
 	}
 

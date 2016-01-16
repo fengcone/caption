@@ -19,6 +19,7 @@ public class ApiAop {
 		long beginTime = System.currentTimeMillis();
 		try {
 			request.setAttribute("param", this.getParam(request));
+			response.setCharacterEncoding("utf-8");
 			joinPoint.proceed();
 		} catch (Exception e) {
 			logger.info("[Caption] Error: " + e.getMessage() + ", cost: "

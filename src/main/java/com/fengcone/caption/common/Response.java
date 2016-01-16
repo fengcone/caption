@@ -13,6 +13,11 @@ public class Response<T extends Param> implements Serializable {
 	private String message = CodeEnum.SUCCESS.getMessage();
 	private T data;
 
+	public void setCodeEnum(CodeEnum codeEnum) {
+		this.code = codeEnum.getCode();
+		this.message = codeEnum.getMessage();
+	}
+
 	public Integer getCode() {
 		return code;
 	}

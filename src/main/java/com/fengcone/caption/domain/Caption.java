@@ -1,7 +1,14 @@
 package com.fengcone.caption.domain;
 
-public class Caption {
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
+import com.fengcone.caption.param.Param;
+
+public class Caption extends Param{
     private String id;
+
+    private Integer orderNo;
 
     private String movieId;
 
@@ -19,6 +26,14 @@ public class Caption {
 
     public void setId(String id) {
         this.id = id == null ? null : id.trim();
+    }
+
+    public Integer getOrderNo() {
+        return orderNo;
+    }
+
+    public void setOrderNo(Integer orderNo) {
+        this.orderNo = orderNo;
     }
 
     public String getMovieId() {
@@ -60,4 +75,9 @@ public class Caption {
     public void setEndTime(Integer endTime) {
         this.endTime = endTime;
     }
+    @Override
+   	public String toString() {
+   		return ReflectionToStringBuilder.toString(this,
+   				ToStringStyle.SHORT_PREFIX_STYLE);
+   	}
 }
