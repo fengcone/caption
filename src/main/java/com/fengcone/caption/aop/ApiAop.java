@@ -17,16 +17,18 @@ public class ApiAop {
 			HttpServletRequest request, HttpServletResponse response)
 			throws Throwable {
 		long beginTime = System.currentTimeMillis();
+		String param =null;
 		try {
-			request.setAttribute("param", this.getParam(request));
-			response.setCharacterEncoding("utf-8");
+			param = this.getParam(request);
+			request.setAttribute("param", param);
+			response.setCharacterEncoding("gbk");
 			joinPoint.proceed();
 		} catch (Exception e) {
 			logger.info("[Caption] Error: " + e.getMessage() + ", cost: "
 					+ (System.currentTimeMillis() - beginTime) + "ms");
 			response.getWriter().write(e.getMessage());
 		} finally {
-			logger.info("[Caption] URI: " + request.getRequestURI() + ""
+			logger.info("[Caption] URI: " + request.getRequestURI() + "    requestParam:"+param
 					+ ", cost: " + (System.currentTimeMillis() - beginTime)
 					+ "ms");
 		}
@@ -39,6 +41,7 @@ public class ApiAop {
 			paramStr = "{";
 			for (Entry<String, String[]> entry : map.entrySet()) {
 				String value = entry.getValue()[0];
+				//这里可以支持同一个参数多个值的情况
 				value = new String(value.getBytes("iso-8859-1"), "utf-8");
 				paramStr = paramStr + "\"" + entry.getKey() + "\":\"" + value
 						+ "\",";

@@ -20,6 +20,12 @@
     from word
     where id = #{id,jdbcType=VARCHAR}
   </select>
+  <select id="selectByEnglish" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from word
+    where english = #{english,jdbcType=VARCHAR}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from word
     where id = #{id,jdbcType=VARCHAR}

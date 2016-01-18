@@ -1,11 +1,10 @@
 package com.fengcone.caption.domain;
 
-import java.util.UUID;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 
 public class Word {
-	public Word(){
-		this.id = UUID.randomUUID().toString();
-	}
     private String id;
 
     private String english;
@@ -85,4 +84,10 @@ public class Word {
     public void setExample(String example) {
         this.example = example == null ? null : example.trim();
     }
+    @Override
+   	public String toString() {
+   		return ReflectionToStringBuilder.toString(this,
+   				ToStringStyle.SHORT_PREFIX_STYLE);
+   	}
+    
 }

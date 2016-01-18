@@ -16,6 +16,7 @@ import com.fengcone.caption.common.Response;
 import com.fengcone.caption.domain.Caption;
 import com.fengcone.caption.param.AddPackageParam;
 import com.fengcone.caption.param.ChooseDTO;
+import com.fengcone.caption.param.ModCaptionParam;
 import com.fengcone.caption.param.NextCaptionParam;
 import com.fengcone.caption.param.Param;
 import com.fengcone.caption.service.EditService;
@@ -45,8 +46,18 @@ public class EditApi {
 	@RequestMapping("next/caption")
 	public void nextCaption(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		NextCaptionParam param = mapper.readValue(request.getAttribute("param").toString(), NextCaptionParam.class);
+		NextCaptionParam param = mapper.readValue(request.getAttribute("param")
+				.toString(), NextCaptionParam.class);
 		Response<Caption> data = service.nextCaption(param);
+		response.getWriter().write(mapper.writeValueAsString(data));
+	}
+
+	@RequestMapping("mod/caption")
+	public void modCaption(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		ModCaptionParam param = mapper.readValue(request.getAttribute("param").toString(),
+				ModCaptionParam.class);
+		Response<Param> data = service.modCaption(param);
 		response.getWriter().write(mapper.writeValueAsString(data));
 	}
 

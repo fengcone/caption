@@ -18,6 +18,7 @@ import com.fengcone.caption.mapper.PackageMapper;
 import com.fengcone.caption.mapper.WordMapper;
 import com.fengcone.caption.param.AddPackageParam;
 import com.fengcone.caption.param.ChooseDTO;
+import com.fengcone.caption.param.ModCaptionParam;
 import com.fengcone.caption.param.NextCaptionParam;
 import com.fengcone.caption.param.Param;
 
@@ -64,5 +65,12 @@ public class EditService {
 			response.setCodeEnum(CodeEnum.NO_MORE_CAPTION);
 		}
 		return response;
+	}
+	public Response<Param> modCaption(ModCaptionParam param) {
+		Caption caption = captionDao.selectByPrimaryKey(param.getCaptionId());
+		caption.setChinese(param.getChinese());
+		caption.setEnglish(param.getEnglish());
+		captionDao.updateByPrimaryKey(caption);
+		return new Response<Param>();
 	}
 }
