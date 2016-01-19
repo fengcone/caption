@@ -5,9 +5,9 @@
     <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="english" property="english" jdbcType="VARCHAR" />
     <result column="chinese" property="chinese" jdbcType="VARCHAR" />
-    <result column="word_type" property="wordType" jdbcType="TINYINT" />
+    <result column="word_type" property="wordType" jdbcType="VARCHAR" />
     <result column="sound_mark" property="soundMark" jdbcType="VARCHAR" />
-    <result column="type" property="type" jdbcType="TINYINT" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
     <result column="weight" property="weight" jdbcType="TINYINT" />
     <result column="example" property="example" jdbcType="VARCHAR" />
   </resultMap>
@@ -35,7 +35,7 @@
       word_type, sound_mark, type, 
       weight, example)
     values (#{id,jdbcType=VARCHAR}, #{english,jdbcType=VARCHAR}, #{chinese,jdbcType=VARCHAR}, 
-      #{wordType,jdbcType=TINYINT}, #{soundMark,jdbcType=VARCHAR}, #{type,jdbcType=TINYINT}, 
+      #{wordType,jdbcType=VARCHAR}, #{soundMark,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
       #{weight,jdbcType=TINYINT}, #{example,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.fengcone.caption.domain.Word" >
@@ -77,13 +77,13 @@
         #{chinese,jdbcType=VARCHAR},
       </if>
       <if test="wordType != null" >
-        #{wordType,jdbcType=TINYINT},
+        #{wordType,jdbcType=VARCHAR},
       </if>
       <if test="soundMark != null" >
         #{soundMark,jdbcType=VARCHAR},
       </if>
       <if test="type != null" >
-        #{type,jdbcType=TINYINT},
+        #{type,jdbcType=VARCHAR},
       </if>
       <if test="weight != null" >
         #{weight,jdbcType=TINYINT},
@@ -103,13 +103,13 @@
         chinese = #{chinese,jdbcType=VARCHAR},
       </if>
       <if test="wordType != null" >
-        word_type = #{wordType,jdbcType=TINYINT},
+        word_type = #{wordType,jdbcType=VARCHAR},
       </if>
       <if test="soundMark != null" >
         sound_mark = #{soundMark,jdbcType=VARCHAR},
       </if>
       <if test="type != null" >
-        type = #{type,jdbcType=TINYINT},
+        type = #{type,jdbcType=VARCHAR},
       </if>
       <if test="weight != null" >
         weight = #{weight,jdbcType=TINYINT},
@@ -124,9 +124,9 @@
     update word
     set english = #{english,jdbcType=VARCHAR},
       chinese = #{chinese,jdbcType=VARCHAR},
-      word_type = #{wordType,jdbcType=TINYINT},
+      word_type = #{wordType,jdbcType=VARCHAR},
       sound_mark = #{soundMark,jdbcType=VARCHAR},
-      type = #{type,jdbcType=TINYINT},
+      type = #{type,jdbcType=VARCHAR},
       weight = #{weight,jdbcType=TINYINT},
       example = #{example,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}

@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.fengcone.caption.common.Response;
 import com.fengcone.caption.param.GetMeanParam;
+import com.fengcone.caption.param.MeanDTO;
 import com.fengcone.caption.service.WordService;
 
 @Controller
@@ -23,7 +25,8 @@ public class WordApi {
 			throws Exception {
 		GetMeanParam param = mapper.readValue(request.getAttribute("param")
 				.toString(), GetMeanParam.class);
-		wordService.getMean(param);
+		Response<MeanDTO> data = wordService.getMean(param);
+		response.getWriter().write(mapper.writeValueAsString(data));
 	}
 
 }

@@ -10,16 +10,17 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.fengcone.caption.domain.Word;
 import com.fengcone.caption.mapper.WordMapper;
+import com.fengcone.caption.service.WordService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:ctx.xml" })
 public class WordDaoTest {
 	@Autowired
-	WordMapper wordDao;
+	WordService wordService;
 	@Test 
-	public void testGetByEnglish(){
+	public void testGetByEnglish() throws Exception{
 		String english = "mean";
-		List<Word> words = wordDao.selectByEnglish(english);
+		List<Word> words = wordService.getMean(english);
 		System.out.println(words);
 	}
 }

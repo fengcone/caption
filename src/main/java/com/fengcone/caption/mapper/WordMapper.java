@@ -16,6 +16,6 @@ public interface WordMapper {
     int updateByPrimaryKeySelective(Word record);
 
     int updateByPrimaryKey(Word record);
-    
-    List<Word> selectByEnglish(String english);
+
+	List<Word> selectByEnglish(String english);
 }

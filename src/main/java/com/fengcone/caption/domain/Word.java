@@ -1,9 +1,5 @@
 package com.fengcone.caption.domain;
 
-import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
-
-
 public class Word {
     private String id;
 
@@ -11,11 +7,11 @@ public class Word {
 
     private String chinese;
 
-    private Byte wordType;
+    private String wordType;
 
     private String soundMark;
 
-    private Byte type;
+    private String type;
 
     private Byte weight;
 
@@ -45,12 +41,12 @@ public class Word {
         this.chinese = chinese == null ? null : chinese.trim();
     }
 
-    public Byte getWordType() {
+    public String getWordType() {
         return wordType;
     }
 
-    public void setWordType(Byte wordType) {
-        this.wordType = wordType;
+    public void setWordType(String wordType) {
+        this.wordType = wordType == null ? null : wordType.trim();
     }
 
     public String getSoundMark() {
@@ -61,12 +57,12 @@ public class Word {
         this.soundMark = soundMark == null ? null : soundMark.trim();
     }
 
-    public Byte getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(Byte type) {
-        this.type = type;
+    public void setType(String type) {
+        this.type = type == null ? null : type.trim();
     }
 
     public Byte getWeight() {
@@ -84,10 +80,4 @@ public class Word {
     public void setExample(String example) {
         this.example = example == null ? null : example.trim();
     }
-    @Override
-   	public String toString() {
-   		return ReflectionToStringBuilder.toString(this,
-   				ToStringStyle.SHORT_PREFIX_STYLE);
-   	}
-    
 }
