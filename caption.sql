@@ -22,6 +22,7 @@ DROP TABLE IF EXISTS `caption`;
 
 CREATE TABLE `caption` (
   `id` varchar(40) NOT NULL COMMENT '数据库主键',
+  `order_no` int(11) default NULL COMMENT '这条字幕在电影中的顺序',
   `movie_id` varchar(40) default NULL COMMENT '关联电影的Id',
   `chinese` varchar(200) default NULL COMMENT '整个句子的中文释义',
   `english` varchar(255) default NULL COMMENT '整个句子的英文释义',
@@ -64,12 +65,13 @@ CREATE TABLE `word` (
   `id` varchar(40) NOT NULL COMMENT '主键',
   `english` varchar(50) default NULL COMMENT '英文',
   `chinese` varchar(255) default NULL COMMENT '中文',
-  `word_type` tinyint(4) default NULL COMMENT '类型，动词，名词等',
+  `word_type` varchar(10) default NULL COMMENT '类型，动词，名词等',
   `sound_mark` varchar(50) default NULL COMMENT '音标',
-  `type` tinyint(4) default NULL COMMENT '类型，如基础，基本，进阶，高级等',
+  `type` varchar(10) default NULL COMMENT '类型，如基础，基本，进阶，高级等',
   `weight` tinyint(4) default NULL COMMENT '权重，单词的重要程度',
   `example` varchar(255) default NULL COMMENT '示例（啊~ 为什么会有这个）',
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY  (`id`),
+  KEY `english` (`english`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
