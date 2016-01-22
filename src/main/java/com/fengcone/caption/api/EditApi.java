@@ -1,12 +1,8 @@
 package com.fengcone.caption.api;
 
-import java.io.IOException;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.codehaus.jackson.JsonParseException;
-import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,7 +23,7 @@ public class EditApi {
 	EditService service;
 	private static ObjectMapper mapper = new ObjectMapper();
 
-	@RequestMapping(value = "choose")
+	@RequestMapping("choose/movie")
 	public void getMovieData(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		Response<ChooseDTO> data = service.choose();

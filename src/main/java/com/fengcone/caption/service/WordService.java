@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
+import com.fengcone.caption.common.CodeEnum;
 import com.fengcone.caption.common.Response;
 import com.fengcone.caption.domain.Word;
 import com.fengcone.caption.mapper.WordMapper;
@@ -33,6 +34,10 @@ public class WordService {
 		List<Word> words = wordDao.selectByEnglish(english);
 		if (CollectionUtils.isEmpty(words)) {
 			words = getMean(english);
+			if (CollectionUtils.isEmpty(words)) {
+				response.setCodeEnum(CodeEnum.NO_THIS_WORD);
+				return response;
+			}
 		}
 		dto.setWords(words);
 		response.setData(dto);
@@ -47,22 +52,28 @@ public class WordService {
 		@SuppressWarnings("unchecked")
 		List<Element> elements = document.getRootElement().elements("string");
 		String englishStr = elements.get(0).getText();
-		String soundMark = englishStr.split(":")[1];
-		String chineseStr = elements.get(1).getText();
 		List<Word> words = new ArrayList<Word>();
+		if (englishStr.startsWith("很抱歉")) {
+			return words;
+		}
+		String soundMark = englishStr.split(": \\[")[1];
+		soundMark = soundMark.substring(0, soundMark.length() - 1);
+		String chineseStr = elements.get(1).getText();
 		String[] chinese = chineseStr.split("\\|");
 		for (String str : chinese) {
 			Word word = new Word();
-			word.setId(UUID.randomUUID().toString().substring(10, 18));
+			word.setId(UUID.randomUUID().toString().substring(0, 8));
 			word.setEnglish(english);
-			if (str.split("\\.").length>1) {
-				word.setChinese(str.split("\\.")[1]);
-				word.setWordType(str.split("\\.")[0]+".");
-			}else {
+			String[] split = str.split("\\.");
+			if (split.length > 1 && split[0].length()< 6) {
+				word.setChinese(split[1]);
+				word.setWordType(split[0]+".");
+			} else {
 				word.setChinese(str);
 			}
 			word.setSoundMark(soundMark);
 			wordDao.insert(word);
+			words.add(word);
 		}
 		return words;
 	}
