@@ -1,8 +1,5 @@
 package com.fengcone.caption.aop;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.apache.log4j.Logger;
 import org.aspectj.lang.ProceedingJoinPoint;
 
@@ -20,6 +17,7 @@ public class ControllerAop {
 		try {
 			ret = joinPoint.proceed();
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			return getErrorResponse(CodeEnum.UNKNOW_ERROR.getCode(),
 					CodeEnum.UNKNOW_ERROR.getMessage());
 		} finally {

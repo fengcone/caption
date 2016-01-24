@@ -16,7 +16,7 @@ public class CaptionUtil {
 		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(
 				"ctx.xml");
 		CaptionMapper captionDao = ctx.getBean(CaptionMapper.class);
-		File file = new File("D:\\Caption\\caption\\lucy.srt");
+		File file = new File("D:\\Caption\\caption\\The Shawshank Redemption.txt");
 		BufferedReader reader = new BufferedReader(new FileReader(file));
 		String temp = null;
 		Integer index = 1;
@@ -38,7 +38,9 @@ public class CaptionUtil {
 				caption.setEndTime(getTime(time[1].trim()));
 				caption.setChinese(chinese);
 				caption.setEnglish(english);
-				caption.setMovieId("lucy0001");
+				caption.setMovieId("Shawshank0001");
+				System.out.println(chinese);
+				System.out.println(english);
 				captionDao.insert(caption);
 			}
 
