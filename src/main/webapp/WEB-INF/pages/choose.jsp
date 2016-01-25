@@ -10,13 +10,14 @@
 <title>首页</title>
 </head>
 <body>
-	<form action="/edit.jsp">
-		<select name="movie">
+	<form action="/edit.html">
+		<select name="movieId">
 			<c:forEach items="${movies}" var="movie">
 				<option value="${movie.movieId}">${movie.movieName}</option>
 			</c:forEach>
 		</select>
 		<input type="submit"/>
 	</form>
+	<input type="text" value="test"/>
 </body>
 </html>

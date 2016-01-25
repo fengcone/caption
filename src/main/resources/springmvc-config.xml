@@ -38,7 +38,7 @@
 		<aop:aspect id="controllerAspect" ref="controllerAop"
 			order="1">
 			<aop:pointcut id="controllerAopPointCut"
-				expression="execution(* com.fengcone.caption.controller.*.*(..))" />
+				expression="execution(* com.fengcone.caption.controller.*.*(..)) and (args(..,request,response))" />
 			<aop:around method="around" pointcut-ref="controllerAopPointCut"></aop:around>
 		</aop:aspect>
 	</aop:config>
