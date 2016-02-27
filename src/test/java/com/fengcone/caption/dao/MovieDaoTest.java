@@ -1,6 +1,7 @@
 package com.fengcone.caption.dao;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.dingding.idmaker.IdMaker;
 import com.fengcone.caption.domain.Caption;
 import com.fengcone.caption.domain.Movie;
 import com.fengcone.caption.mapper.CaptionMapper;
@@ -25,7 +25,7 @@ public class MovieDaoTest {
 	@Test
 	public void testInsert() {
 		Caption caption = new Caption();
-		caption.setId(IdMaker.getId());
+		caption.setId(UUID.randomUUID().toString());
 		caption.setChinese("哈哈");
 		caption.setEnglish("xxxx");
 		System.out.println(captionDao.insert(caption));

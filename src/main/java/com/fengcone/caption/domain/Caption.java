@@ -1,63 +1,83 @@
 package com.fengcone.caption.domain;
 
-public class Caption {
-	private Long id;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
-	private Long movieId;
+import com.fengcone.caption.param.Param;
 
-	private String chinese;
+public class Caption extends Param{
+    private String id;
 
-	private String english;
+    private Integer orderNo;
 
-	private Integer startTime;
+    private String movieId;
 
-	private Integer endTime;
+    private String chinese;
 
-	public Long getId() {
-		return id;
-	}
+    private String english;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    private Integer startTime;
 
-	public Long getMovieId() {
-		return movieId;
-	}
+    private Integer endTime;
 
-	public void setMovieId(Long movieId) {
-		this.movieId = movieId;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public String getChinese() {
-		return chinese;
-	}
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
+    }
 
-	public void setChinese(String chinese) {
-		this.chinese = chinese == null ? null : chinese.trim();
-	}
+    public Integer getOrderNo() {
+        return orderNo;
+    }
 
-	public String getEnglish() {
-		return english;
-	}
+    public void setOrderNo(Integer orderNo) {
+        this.orderNo = orderNo;
+    }
 
-	public void setEnglish(String english) {
-		this.english = english == null ? null : english.trim();
-	}
+    public String getMovieId() {
+        return movieId;
+    }
 
-	public Integer getStartTime() {
-		return startTime;
-	}
+    public void setMovieId(String movieId) {
+        this.movieId = movieId == null ? null : movieId.trim();
+    }
 
-	public void setStartTime(Integer startTime) {
-		this.startTime = startTime;
-	}
+    public String getChinese() {
+        return chinese;
+    }
 
-	public Integer getEndTime() {
-		return endTime;
-	}
+    public void setChinese(String chinese) {
+        this.chinese = chinese == null ? null : chinese.trim();
+    }
 
-	public void setEndTime(Integer endTime) {
-		this.endTime = endTime;
-	}
+    public String getEnglish() {
+        return english;
+    }
+
+    public void setEnglish(String english) {
+        this.english = english == null ? null : english.trim();
+    }
+
+    public Integer getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Integer startTime) {
+        this.startTime = startTime;
+    }
+
+    public Integer getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Integer endTime) {
+        this.endTime = endTime;
+    }
+    @Override
+   	public String toString() {
+   		return ReflectionToStringBuilder.toString(this,
+   				ToStringStyle.SHORT_PREFIX_STYLE);
+   	}
 }

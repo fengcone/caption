@@ -2,12 +2,14 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
 	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
 	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
-	<!-- <aop:aspectj-autoproxy /> -->
+	<aop:aspectj-autoproxy />
+	<mvc:annotation-driven />
 	<!-- Spring 参数文件配置 -->
 	<bean
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -43,18 +45,5 @@
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="com.fengcone.caption.mapper" />
 	</bean>
-	<!-- <aop:config proxy-target-class="true">
-		<aop:aspect id="captionAspectj" ref="captionAop" order="0">
-			<aop:pointcut id="captionAopPointCut"
-					expression="execution(* com.fengcone.caption.controller.*.*(..)) and (args(..,request,response))" />
-			<aop:around pointcut-ref="captionAopPointCut" method="around"></aop:around>
-		</aop:aspect>
-	</aop:config> -->
-	<aop:config proxy-target-class="true">
-        <aop:aspect id="captionAspect" ref="captionAop" order="1">
-            <aop:pointcut id="captionAopPointCut"
-                          expression="execution(* com.fengcone.caption.controller.*.*(..))" />
-            <aop:around pointcut-ref="captionAopPointCut" method="around"></aop:around>
-        </aop:aspect>
-    </aop:config>
+	<!-- <import resource="springmvc-config.xml"/> -->
 </beans>

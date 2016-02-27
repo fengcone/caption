@@ -1,51 +1,51 @@
 package com.fengcone.caption.domain;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 public class Movie {
-	private Long id;
+    private String id;
 
-	private Long movieId;
+    private String movieId;
 
-	private String movieName;
+    private String movieName;
 
-	private Integer movieTime;
+    private Integer movieTime;
 
-	public Long getId() {
-		return id;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
+    }
 
-	public Long getMovieId() {
-		return movieId;
-	}
+    public String getMovieId() {
+        return movieId;
+    }
 
-	public void setMovieId(Long movieId) {
-		this.movieId = movieId;
-	}
+    public void setMovieId(String movieId) {
+        this.movieId = movieId == null ? null : movieId.trim();
+    }
 
-	public String getMovieName() {
-		return movieName;
-	}
+    public String getMovieName() {
+        return movieName;
+    }
 
-	public void setMovieName(String movieName) {
-		this.movieName = movieName == null ? null : movieName.trim();
-	}
+    public void setMovieName(String movieName) {
+        this.movieName = movieName == null ? null : movieName.trim();
+    }
 
-	public Integer getMovieTime() {
-		return movieTime;
-	}
+    public Integer getMovieTime() {
+        return movieTime;
+    }
 
-	public void setMovieTime(Integer movieTime) {
-		this.movieTime = movieTime;
-	}
-
-	@Override
+    public void setMovieTime(Integer movieTime) {
+        this.movieTime = movieTime;
+    }
+    @Override
 	public String toString() {
-		return "Movie [" + (id != null ? "id=" + id + ", " : "")
-				+ (movieId != null ? "movieId=" + movieId + ", " : "")
-				+ (movieName != null ? "movieName=" + movieName + ", " : "")
-				+ (movieTime != null ? "movieTime=" + movieTime : "") + "]";
+		return ReflectionToStringBuilder.toString(this,
+				ToStringStyle.SHORT_PREFIX_STYLE);
 	}
 }

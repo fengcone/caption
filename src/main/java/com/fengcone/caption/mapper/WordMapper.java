@@ -1,17 +1,21 @@
 package com.fengcone.caption.mapper;
 
+import java.util.List;
+
 import com.fengcone.caption.domain.Word;
 
 public interface WordMapper {
-	int deleteByPrimaryKey(Long id);
+    int deleteByPrimaryKey(String id);
 
-	int insert(Word record);
+    int insert(Word record);
 
-	int insertSelective(Word record);
+    int insertSelective(Word record);
 
-	Word selectByPrimaryKey(Long id);
+    Word selectByPrimaryKey(String id);
 
-	int updateByPrimaryKeySelective(Word record);
+    int updateByPrimaryKeySelective(Word record);
 
-	int updateByPrimaryKey(Word record);
+    int updateByPrimaryKey(Word record);
+
+	List<Word> selectByEnglish(String english);
 }

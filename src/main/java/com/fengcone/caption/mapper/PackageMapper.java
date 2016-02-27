@@ -3,15 +3,15 @@ package com.fengcone.caption.mapper;
 import com.fengcone.caption.domain.Package;
 
 public interface PackageMapper {
-	int deleteByPrimaryKey(Long id);
+    int deleteByPrimaryKey(String id);
 
-	int insert(Package record);
+    int insert(Package record);
 
-	int insertSelective(Package record);
+    int insertSelective(Package record);
 
-	Package selectByPrimaryKey(Long id);
+    Package selectByPrimaryKey(String id);
 
-	int updateByPrimaryKeySelective(Package record);
+    int updateByPrimaryKeySelective(Package record);
 
-	int updateByPrimaryKey(Package record);
+    int updateByPrimaryKey(Package record);
 }

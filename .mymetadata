@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="caption"
+  id="myeclipse.1452351079298"
+  context-root="/caption"
+  j2ee-spec="1.7"
+  archive="caption.war">
+  <attributes>
+    <attribute name="webrootdir" value="src/main/webapp" />
+  </attributes>
+</project-module>
+

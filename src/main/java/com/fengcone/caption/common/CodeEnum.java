@@ -2,7 +2,9 @@ package com.fengcone.caption.common;
 
 public enum CodeEnum {
 	SUCCESS(1000, "成功"), 
-	UNKNOW_ERROR(9999, "内部错误");
+	UNKNOW_ERROR(9999, "内部错误"),
+	NO_MORE_CAPTION(9998,"没有更多的字幕了"),
+	NO_THIS_WORD(9997,"没有关于这个单词的释义");
 	private CodeEnum(Integer code, String message) {
 		this.code = code;
 		this.message = message;

@@ -1,0 +1,55 @@
+package com.fengcone.caption.aop;
+
+import java.util.Map;
+import java.util.Map.Entry;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.log4j.Logger;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.springframework.util.CollectionUtils;
+
+public class ControllerAop {
+	private static final Logger logger = Logger.getLogger(ControllerAop.class);
+
+	public Object around(ProceedingJoinPoint joinPoint,
+			HttpServletRequest request, HttpServletResponse response)
+			throws Throwable {
+		Object ret = null;
+		long beginTime = System.currentTimeMillis();
+		String param = null;
+		try {
+			param = this.getParam(request);
+			request.setAttribute("param", param);
+			response.setCharacterEncoding("gbk");
+			ret = joinPoint.proceed();
+		} catch (Exception e) {
+			logger.info("[Caption] Error: " + e.getMessage() + ", cost: "
+					+ (System.currentTimeMillis() - beginTime) + "ms");
+			response.getWriter().write(e.getMessage());
+		} finally {
+			logger.info("[Caption] URI: " + request.getRequestURI()
+					+ "    requestParam:" + param + ", cost: "
+					+ (System.currentTimeMillis() - beginTime) + "ms");
+		}
+		return ret;
+	}
+
+	private String getParam(HttpServletRequest request) throws Exception {
+		Map<String, String[]> map = request.getParameterMap();
+		String paramStr = null;
+		if (!CollectionUtils.isEmpty(map)) {
+			paramStr = "{";
+			for (Entry<String, String[]> entry : map.entrySet()) {
+				String value = entry.getValue()[0];
+				// 这里可以支持同一个参数多个值的情况
+				value = new String(value.getBytes("iso-8859-1"), "utf-8");
+				paramStr = paramStr + "\"" + entry.getKey() + "\":\"" + value
+						+ "\",";
+			}
+			paramStr = paramStr.substring(0, paramStr.length() - 1) + "}";
+		}
+		return paramStr;
+	}
+}

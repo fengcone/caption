@@ -1,63 +1,71 @@
 package com.fengcone.caption.domain;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 public class Package {
-	private Long id;
+    private String id;
 
-	private Long captionId;
+    private String captionId;
 
-	private String chinese;
+    private String chinese;
 
-	private String english;
+    private String english;
 
-	private Integer startTime;
+    private Integer startTime;
 
-	private Integer endTime;
+    private Integer endTime;
 
-	public Long getId() {
-		return id;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
+    }
 
-	public Long getCaptionId() {
-		return captionId;
-	}
+    public String getCaptionId() {
+        return captionId;
+    }
 
-	public void setCaptionId(Long captionId) {
-		this.captionId = captionId;
-	}
+    public void setCaptionId(String captionId) {
+        this.captionId = captionId == null ? null : captionId.trim();
+    }
 
-	public String getChinese() {
-		return chinese;
-	}
+    public String getChinese() {
+        return chinese;
+    }
 
-	public void setChinese(String chinese) {
-		this.chinese = chinese == null ? null : chinese.trim();
-	}
+    public void setChinese(String chinese) {
+        this.chinese = chinese == null ? null : chinese.trim();
+    }
 
-	public String getEnglish() {
-		return english;
-	}
+    public String getEnglish() {
+        return english;
+    }
 
-	public void setEnglish(String english) {
-		this.english = english == null ? null : english.trim();
-	}
+    public void setEnglish(String english) {
+        this.english = english == null ? null : english.trim();
+    }
 
-	public Integer getStartTime() {
-		return startTime;
-	}
+    public Integer getStartTime() {
+        return startTime;
+    }
 
-	public void setStartTime(Integer startTime) {
-		this.startTime = startTime;
-	}
+    public void setStartTime(Integer startTime) {
+        this.startTime = startTime;
+    }
 
-	public Integer getEndTime() {
-		return endTime;
-	}
+    public Integer getEndTime() {
+        return endTime;
+    }
 
-	public void setEndTime(Integer endTime) {
-		this.endTime = endTime;
-	}
+    public void setEndTime(Integer endTime) {
+        this.endTime = endTime;
+    }
+    @Override
+   	public String toString() {
+   		return ReflectionToStringBuilder.toString(this,
+   				ToStringStyle.SHORT_PREFIX_STYLE);
+   	}
 }

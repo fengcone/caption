@@ -2,8 +2,8 @@ package com.fengcone.caption.common;
 
 import java.io.Serializable;
 
-import org.apache.commons.lang.builder.ReflectionToStringBuilder;
-import org.apache.commons.lang.builder.ToStringStyle;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 import com.fengcone.caption.param.Param;
 
@@ -12,6 +12,11 @@ public class Response<T extends Param> implements Serializable {
 	private Integer code = CodeEnum.SUCCESS.getCode();
 	private String message = CodeEnum.SUCCESS.getMessage();
 	private T data;
+
+	public void setCodeEnum(CodeEnum codeEnum) {
+		this.code = codeEnum.getCode();
+		this.message = codeEnum.getMessage();
+	}
 
 	public Integer getCode() {
 		return code;

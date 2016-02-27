@@ -7,17 +7,30 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>首页</title>
+<title>编辑页</title>
+<script type="text/javascript" src="/js/show.js"></script>
 </head>
 <body>
-	<form action="/edit.html">
-		<select name="movieId">
-			<c:forEach items="${movies}" var="movie">
-				<option value="${movie.movieId}">${movie.movieName}</option>
-			</c:forEach>
-		</select>
-		<input type="submit"/>
-	</form>
-	<input type="text" value="test"/>
+	<div>
+		${caption.id}
+	</div>
+	<div>
+		${caption.orderNo}
+	</div>
+	<div>
+		${caption.chinese}
+	</div>
+	<div>
+		${caption.english}
+	</div>
+	<div>
+		${caption.movieId}
+	</div>
+	<div>
+		${caption.startTime}
+	</div>
+	<div>
+		${caption.endTime}
+	</div>
 </body>
 </html>
