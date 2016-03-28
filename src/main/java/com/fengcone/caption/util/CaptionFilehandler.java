@@ -8,7 +8,7 @@ import java.util.Set;
 
 public class CaptionFilehandler {
 	public static void main(String[] args) {
-		File file = new File("D:\\Caption\\字幕资料文件");
+		File file = new File("D:\\字幕文件\\字幕文件文件夹");
 		Set<String> fileNames = new HashSet<String>();
 		CC(file, fileNames);
 		for (String string : fileNames) {
@@ -25,7 +25,7 @@ public class CaptionFilehandler {
 					CC(file, fileNames);
 				}else {
 					if (file.getName().contains("英文")&& file.getName().endsWith("srt")) {
-						File newFile = new File("D:\\Caption\\ass\\"+file.getName());
+						File newFile = new File("D:\\字幕文件\\srt\\"+file.getName());
 						newFile.createNewFile();
 						copyFile(file, newFile);
 						break;

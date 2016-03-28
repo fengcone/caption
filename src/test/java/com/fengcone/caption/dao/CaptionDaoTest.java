@@ -1,10 +1,16 @@
 package com.fengcone.caption.dao;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
+
+import javax.annotation.PostConstruct;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.Test;
@@ -23,9 +29,24 @@ import com.fengcone.caption.vo.CaptionVo;
 public class CaptionDaoTest {
 	@Autowired
 	CaptionMapper captionDao;
+	private Map<String, Integer> wordsRank = new HashMap<String, Integer>();
 
 	private ObjectMapper mapper = new ObjectMapper();
 
+	@PostConstruct
+	public void init() throws Exception{
+		
+		File file = new File("D:/CaptionData/result.txt");
+		BufferedReader reader = new BufferedReader(new FileReader(file));
+		String word = null;
+		Integer rank = 1;
+		while ((word = reader.readLine())!=null) {
+			word = word.split(" ")[0];
+			wordsRank.put(word, rank);
+			rank++;
+		}
+		reader.close();
+	}
 	@Test
 	public void testCaptionDao() throws Exception {
 		File file;
@@ -53,10 +74,17 @@ public class CaptionDaoTest {
 				packages.add(package1);
 			}
 			vo.setPackages(packages);
+			Map<String, Integer> map = new HashMap<String, Integer>(); 
+			String [] words = caption.getEnglish().split("[^abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ']");
+			for (String word : words) {
+				map.put(word, wordsRank.get(word.toLowerCase()));
+			}
+			caption.setWordsRank(map);
+			vo.setCaption(caption);
 			vos.add(vo);
-			if ((caption.getOrderNo() % 10) == 0) {
-				String filepath = "D://Lucy//lucy";
-				file = new File(filepath + (caption.getOrderNo() - 10) + "-"
+			if ((caption.getOrderNo() % 20) == 0) {
+				String filepath = "D:/CaptionData//lucy";
+				file = new File(filepath + (caption.getOrderNo() - 20) + "-"
 						+ caption.getOrderNo()+".json");
 				writer = new PrintWriter(file);
 				String str = mapper.writeValueAsString(vos);
@@ -65,6 +93,5 @@ public class CaptionDaoTest {
 				writer.close();
 			}
 		}
-
 	}
 }

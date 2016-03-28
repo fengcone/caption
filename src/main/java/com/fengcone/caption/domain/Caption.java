@@ -1,5 +1,7 @@
 package com.fengcone.caption.domain;
 
+import java.util.Map;
+
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -19,8 +21,18 @@ public class Caption extends Param{
     private Integer startTime;
 
     private Integer endTime;
+    
+    private Map<String, Integer> wordsRank;
 
-    public String getId() {
+    public Map<String, Integer> getWordsRank() {
+		return wordsRank;
+	}
+
+	public void setWordsRank(Map<String, Integer> wordsRank) {
+		this.wordsRank = wordsRank;
+	}
+
+	public String getId() {
         return id;
     }
 

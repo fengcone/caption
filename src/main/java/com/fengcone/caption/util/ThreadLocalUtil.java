@@ -10,4 +10,9 @@ public class ThreadLocalUtil {
 	public static void setResponse(HttpServletResponse response){
 		threadRes.set(response);
 	}
+	public static void main(String[] args) {
+		String xx ="dgfhdhg";
+		xx.substring(1, xx.length());
+		System.out.println(xx);
+	}
 }
