@@ -12,9 +12,9 @@ public class Package {
 
     private String english;
 
-//    private Integer startTime;
-//
-//    private Integer endTime;
+    private Integer startTime;
+
+    private Integer endTime;
 
     public String getId() {
         return id;
@@ -48,21 +48,21 @@ public class Package {
         this.english = english == null ? null : english.trim();
     }
 
-//    public Integer getStartTime() {
-//        return startTime;
-//    }
-//
-//    public void setStartTime(Integer startTime) {
-//        this.startTime = startTime;
-//    }
-//
-//    public Integer getEndTime() {
-//        return endTime;
-//    }
-//
-//    public void setEndTime(Integer endTime) {
-//        this.endTime = endTime;
-//    }
+    public Integer getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Integer startTime) {
+        this.startTime = startTime;
+    }
+
+    public Integer getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Integer endTime) {
+        this.endTime = endTime;
+    }
     @Override
    	public String toString() {
    		return ReflectionToStringBuilder.toString(this,
