@@ -1,5 +1,7 @@
 package com.fengcone.caption.mapper;
 
+import java.util.List;
+
 import com.fengcone.caption.domain.Package;
 
 public interface PackageMapper {
@@ -14,4 +16,6 @@ public interface PackageMapper {
     int updateByPrimaryKeySelective(Package record);
 
     int updateByPrimaryKey(Package record);
+    
+    List<Package> selectByCondition(Package package1);
 }

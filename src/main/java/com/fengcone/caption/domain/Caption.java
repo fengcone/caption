@@ -1,11 +1,13 @@
 package com.fengcone.caption.domain;
 
+import java.util.Map;
+
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import com.fengcone.caption.param.Param;
 
-public class Caption extends Param{
+public class Caption extends Param implements Comparable<Caption>{
     private String id;
 
     private Integer orderNo;
@@ -19,8 +21,18 @@ public class Caption extends Param{
     private Integer startTime;
 
     private Integer endTime;
+    
+    private Map<String, Integer> wordsRank;
 
-    public String getId() {
+    public Map<String, Integer> getWordsRank() {
+		return wordsRank;
+	}
+
+	public void setWordsRank(Map<String, Integer> wordsRank) {
+		this.wordsRank = wordsRank;
+	}
+
+	public String getId() {
         return id;
     }
 
@@ -80,4 +92,11 @@ public class Caption extends Param{
    		return ReflectionToStringBuilder.toString(this,
    				ToStringStyle.SHORT_PREFIX_STYLE);
    	}
+
+	@Override
+	public int compareTo(Caption o) {
+		return this.getOrderNo() - o.getOrderNo();
+	}
+	
+	
 }

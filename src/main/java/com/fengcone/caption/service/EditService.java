@@ -44,11 +44,11 @@ public class EditService {
 	public Response<Param> addPackage(AddPackageParam param){
 		Package pac = new Package();
 		pac.setCaptionId(param.getCaptionId());
-		pac.setEndTime(param.getEndTime());
+//		pac.setEndTime(param.getEndTime());
 		pac.setChinese(param.getChinese());
 		pac.setEnglish(param.getEnglish());
 		pac.setId(UUID.randomUUID().toString().substring(0, 8));
-		pac.setStartTime(param.getStartTime());
+//		pac.setStartTime(param.getStartTime());
 		packageDao.insert(pac);
 		Response<Param> response = new Response<Param>();
 		return response;
