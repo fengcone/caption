@@ -18,4 +18,6 @@ public interface WordMapper {
     int updateByPrimaryKey(Word record);
 
 	List<Word> selectByEnglish(String english);
+	
+	List<Word> selectByCondition(Word word);
 }

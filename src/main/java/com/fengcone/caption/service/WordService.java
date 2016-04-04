@@ -33,7 +33,7 @@ public class WordService {
 		String english = param.getEnglish();
 		List<Word> words = wordDao.selectByEnglish(english);
 		if (CollectionUtils.isEmpty(words)) {
-			words = getMean(english);
+			words = getMean(english,null);
 			if (CollectionUtils.isEmpty(words)) {
 				response.setCodeEnum(CodeEnum.NO_THIS_WORD);
 				return response;
@@ -44,7 +44,7 @@ public class WordService {
 		return response;
 	}
 
-	public List<Word> getMean(String english) throws Exception {
+	public List<Word> getMean(String english ,Integer rank) throws Exception {
 		String xml = HttpClientUtil.getInstance().httpGet(WORD_URL + english,
 				"utf-8");
 		Document document = reader.read(new ByteArrayInputStream(xml
@@ -64,6 +64,7 @@ public class WordService {
 			Word word = new Word();
 			word.setId(UUID.randomUUID().toString().substring(0, 8));
 			word.setEnglish(english);
+			word.setRank(rank);
 			String[] split = str.split("\\.");
 			if (split.length > 1 && split[0].length()< 6) {
 				word.setChinese(split[1]);

@@ -22,7 +22,9 @@ import org.springframework.util.CollectionUtils;
 
 import com.fengcone.caption.domain.Caption;
 import com.fengcone.caption.domain.Package;
+import com.fengcone.caption.domain.Word;
 import com.fengcone.caption.mapper.CaptionMapper;
+import com.fengcone.caption.mapper.WordMapper;
 import com.fengcone.caption.vo.CaptionVo;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -30,6 +32,8 @@ import com.fengcone.caption.vo.CaptionVo;
 public class CaptionDaoTest {
 	@Autowired
 	CaptionMapper captionDao;
+	@Autowired
+	WordMapper wordDao;
 	private Map<String, Integer> wordsRank = new HashMap<String, Integer>();
 
 	private ObjectMapper mapper = new ObjectMapper();
@@ -59,19 +63,26 @@ public class CaptionDaoTest {
 		List<CaptionVo> vos = new ArrayList<CaptionVo>();
 		Integer index = 0;
 		for (Caption caption : captions) {
-			if (caption.getOrderNo() < 126) {
+			if (caption.getOrderNo() < 356) {
 				continue;
 			}
 			CaptionVo vo = new CaptionVo();
 			vo.setCaption(caption);
 			List<Package> packages = new ArrayList<Package>();
 			
-			Map<String, Integer> map = new HashMap<String, Integer>();
+			Map<String, String> map = new HashMap<String, String>();
 			String[] words = caption.getEnglish().split("[^abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ']");
 			for (String word : words) {
 				Integer rank = wordsRank.get(word.toLowerCase());
 				if (rank != null && rank > 2000) {
-					map.put(word, rank);
+					Word word2 = new Word();
+					word2.setEnglish(word);
+					List<Word> words2 = wordDao.selectByCondition(word2);
+					String chinese = "";
+					for (Word word3 : words2) {
+						chinese = chinese + word3.getChinese()+ "||";
+					}
+					map.put(word, chinese);
 				}
 			}
 			if (CollectionUtils.isEmpty(map)) {

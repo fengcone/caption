@@ -121,7 +121,7 @@ public class MovieDaoTest {
 	private static String getTimeStr(Integer time) {
 		String mills = String.valueOf(time % 1000);
 		String seconds = String.valueOf((time / 1000) % 60);
-		String minutes = String.valueOf((time / 60 * 1000) % 60);
+		String minutes = String.valueOf((time / (60 * 1000)) % 60);
 		String hours = String.valueOf((time / (1000 * 60 * 60)) % 60);
 		for (int i = 0; i < 3 - mills.length(); i++) {
 			mills = "0" + mills;

@@ -22,13 +22,13 @@ public class Caption extends Param implements Comparable<Caption>{
 
     private Integer endTime;
     
-    private Map<String, Integer> wordsRank;
+    private Map<String, String> wordsRank;
 
-    public Map<String, Integer> getWordsRank() {
+    public Map<String, String> getWordsRank() {
 		return wordsRank;
 	}
 
-	public void setWordsRank(Map<String, Integer> wordsRank) {
+	public void setWordsRank(Map<String, String> wordsRank) {
 		this.wordsRank = wordsRank;
 	}
 

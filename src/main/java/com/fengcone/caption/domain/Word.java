@@ -13,7 +13,7 @@ public class Word {
 
     private String type;
 
-    private Byte weight;
+    private Integer rank;
 
     private String example;
 
@@ -65,12 +65,12 @@ public class Word {
         this.type = type == null ? null : type.trim();
     }
 
-    public Byte getWeight() {
-        return weight;
+    public Integer getRank() {
+        return rank;
     }
 
-    public void setWeight(Byte weight) {
-        this.weight = weight;
+    public void setRank(Integer Rank) {
+        this.rank = Rank;
     }
 
     public String getExample() {
